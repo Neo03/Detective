@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-12-23T15:22:23
+# Project created by QtCreator 2020-02-13T11:56:15
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += multimediawidgets
 
-TARGET = Facetious
+TARGET = Detective
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
