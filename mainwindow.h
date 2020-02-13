@@ -3,38 +3,31 @@
 
 #include <QMainWindow>
 #include <QMenuBar>
+#include <QAction>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QStatusBar>
+#include <QLabel>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QListView>
-#include <QLabel>
+#include <QGraphicsPixmapItem>
 #include <QMutex>
 #include <QStandardItemModel>
-#include <QListView>
-#include <QAction>
 
 #include "opencv2/opencv.hpp"
+
 #include "capture_thread.h"
-
-#include <QCamera>
-
-
-namespace Ui {
-class MainWindow;
-}
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent=nullptr);
     ~MainWindow();    
 
-
-private:
-   
+private:  
     void initUI();
     void createActions();
     void populateSavedList();
@@ -43,10 +36,8 @@ private slots:
     void showCameraInfo();
     void openCamera();
     void updateFrame(cv::Mat *mat);
-    void takePhoto();
-    
+    void takePhoto();    
     void appendSavedPhoto(QString name);
-    void updateMasks(int status);
 
 private:
     QMenu *fileMenu;
@@ -54,15 +45,15 @@ private:
     QAction *cameraInfoAction;
     QAction *openCameraAction;
     QAction *exitAction;
-    // выбор масок
-    QCheckBox *mask_checkboxes[CaptureThread::MASK_COUNT];
-
+    
     QGraphicsScene *imageScene;
     QGraphicsView *imageView;
 
     QPushButton *shutterButton;
 
     QListView *saved_list;
+    QStandardItemModel *list_model;
+
     QStatusBar *mainStatusBar;
     QLabel *mainStatusLabel;
 
@@ -71,9 +62,6 @@ private:
     //for capture thread
     QMutex *data_lock;
     CaptureThread *capturer;
-    // for video saving
-    QStandardItemModel *list_model;
-
 };
 
 #endif // MAINWINDOW_H

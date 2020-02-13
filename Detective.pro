@@ -21,15 +21,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-DEFINES += OPENCV_DATA_DIR=\\\"/usr/share/opencv/\\\"
+DEFINES += OPENCV_DATA_DIR=\\\"/usr/local/share/opencv4/\\\"
 unix {
-    INCLUDEPATH += /usr/local/include
-   # INCLUDEPATH += /usr/local/lib
+    INCLUDEPATH += /usr/local/include/opencv4
+    #INCLUDEPATH += /usr/local/lib
     INCLUDEPATH += /root/opencv_build/opencv/modules
     INCLUDEPATH += /root/opencv_build/opencv_contrib/modules
     target.path = /usr/lib
     INSTALLS += target
-    LIBS += -L/usr/local/lib -lopencv_imgproc -lopencv_core -lopencv_video -lopencv_videoio -lopencv_imgcodecs -lopencv_objdetect -lopencv_face
+    LIBS += -L/usr/local/lib -lopencv_imgproc -lopencv_core -lopencv_video -lopencv_videoio -lopencv_imgcodecs -lopencv_objdetect -lopencv_dnn
     CONFIG += link_pkgconfig\
            plugin
     PKGCONFIG += opencv4
